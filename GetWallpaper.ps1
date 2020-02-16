@@ -8,7 +8,7 @@ $collections = "437035,3652377,8362253"
 # construct request parameters
 $url = "https://api.unsplash.com/photos/random"
 $headers = @{ "Accept-Version" = "v1"; Authorization = "Client-ID $access_key" }
-$params = @{ collections = $collections; featured = "true"; orientation = "landscape" }
+$params = @{ collections = $collections; orientation = "landscape" }
 
 # make API requests to Unsplash for a random photo
 $response = Invoke-WebRequest $url -Method Get -Headers $headers -Body $params
