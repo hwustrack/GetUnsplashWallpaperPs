@@ -1,1 +1,1 @@
-Powershell script to retrieve a random image from [Unsplash.com](https://unsplash.com/) using their free public API. I use this script to rotate the wallpaper on my laptop.
+PowerShell script to retrieve a random image from [Unsplash.com](https://unsplash.com/) using their free public API. I use this script to rotate the background on my laptop.
