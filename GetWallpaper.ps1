@@ -5,17 +5,19 @@ $access_key = $creds.GetNetworkCredential().password
 # query parameters
 $collections = "437035,3652377,8362253"
 
-# construct request parameters
-$url = "https://api.unsplash.com/photos/random"
+# request parameters
+$baseUrl = "https://api.unsplash.com"
+$randomPhotoUrl = $baseUrl + "/photos/random"
 $headers = @{ "Accept-Version" = "v1"; Authorization = "Client-ID $access_key" }
 $params = @{ collections = $collections; orientation = "landscape" }
 
 # make API requests to Unsplash for a random photo
-$response = Invoke-WebRequest $url -Method Get -Headers $headers -Body $params
+$response = Invoke-WebRequest $randomPhotoUrl -Method Get -Headers $headers -Body $params
 $content = $response | ConvertFrom-Json
-$imgUrl = $content.urls.full
+$imgUrl = $content.urls.raw
 $id = $content.id
-Invoke-WebRequest $imgUrl -OutFile ".\$id.jpg"
+Invoke-WebRequest $imgUrl -Headers $headers -Body @{ fm = "jpg"; w = "1920"; q = "80" } -OutFile ".\$id.jpg"
+Invoke-WebRequest "$baseUrl/photos/$id/download" -Headers $headers
 
 # write img metadata to file
 $sel = $content | 
