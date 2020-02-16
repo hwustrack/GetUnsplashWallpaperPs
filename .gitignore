@@ -1,4 +1,6 @@
 *
 
 !.gitignore
+!README.md
+!License.txt
 !GetWallpaper.ps1
