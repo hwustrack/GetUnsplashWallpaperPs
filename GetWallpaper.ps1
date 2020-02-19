@@ -1,3 +1,5 @@
+#Requires -Modules CredentialManager
+
 # secrets
 $creds = Get-StoredCredential -Target unsplash
 $access_key = $creds.GetNetworkCredential().password
