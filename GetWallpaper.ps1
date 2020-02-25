@@ -28,4 +28,4 @@ $sel = $content |
 $sel | Format-List | Out-File -FilePath ".\$id.txt"
 
 # remove old files
-Get-ChildItem -Path .\* -Include ("*.jpg", "*.txt") | Where-Object {$_.CreationTime -lt (Get-Date).AddMinutes(-60)} | Remove-Item
+Get-ChildItem -Path .\* -Include ("*.jpg", "*.txt") | Where-Object {$_.CreationTime -lt (Get-Date).AddDays(-3)} | Remove-Item
